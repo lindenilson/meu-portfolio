@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-contato {
+    background-color: #03FA6E;
+}
+
+body {
+    font-family: roboto;
+}
+
+.caixa-especialidade {
+    max-width: 420px;
+}

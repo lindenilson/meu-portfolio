@@ -17,3 +17,34 @@ function toggleProjects() {
 
     showingAll = !showingAll;
 }
+
+
+//FUNÇÃO MENU MOBILE
+
+let btnAbrir = document.getElementById ('btn-abrir')
+let btnFechar = document.getElementById ('btn-fechar')
+let menu = document.getElementById ('menu-mobile')
+let orvelay = document.getElementById ('orvelay-menu')
+
+btnAbrir.addEventListener('click', ()=> {
+    menu.classList.add('abrir-menu')
+})
+
+btnFechar.addEventListener('click', ()=> {
+    menu.classList.remove('abrir-menu')
+})
+
+orvelay.addEventListener('click', ()=> {
+    menu.classList.remove('abrir-menu')
+})
+
+
+const menuLinks = document.querySelectorAll('.menu-link');
+const menuMobile = document.getElementById('menu-mobile');
+
+  // Fecha o menu ao clicar em um link
+  menuLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      menuMobile.classList.remove('abrir-menu');
+    });
+  });

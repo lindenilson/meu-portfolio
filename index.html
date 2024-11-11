@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Lindenilson</title>
     <link href="./src/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./input.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="icon" href="./src/img/favicon.svg" type="image/x-icon">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
@@ -17,30 +21,66 @@
 
 <body class="bg-black text-white">
     <header class="text-white">
-        <div class=" bg-black min-h-20 flex justify-between items-center px-20">
+        <div class=" bg-black min-h-20 flex justify-between items-center px-6 md:px-20">
             <div class="logo">
                 <a href="#">
                     <img class="w-52" src="./src/img/logo.png" alt="Logo da pagina">
                 </a>
             </div>
 
-            <nav class="menu-desktop">
+            <nav class="menu-desktop hidden md:flex">
                 <ul class="flex gap-10 text-gray-300">
                     <li class="hover:text-white hover:scale-105 hover:transition duration-300 ease-in-out"><a
-                            href="#">Início</a></li>
+                            href="#inicio">Início</a></li>
                     <li class="hover:text-white hover:scale-105 hover:transition duration-300 ease-in-out"><a
-                            href="#">Sobre</a></li>
+                            href="#especialidades">Especialidades</a></li>
                     <li class="hover:text-white hover:scale-105 hover:transition duration-300 ease-in-out"><a
-                            href="#">Projetos</a></li>
+                            href="#sobre">Sobre</a></li>
                     <li class="hover:text-white hover:scale-105 hover:transition duration-300 ease-in-out"><a
-                            href="#">Contato</a></li>
+                            href="#projetos">Projetos</a></li>
+                    <li class="hover:text-white hover:scale-105 hover:transition duration-300 ease-in-out"><a
+                            href="#contato">Contato</a></li>
                 </ul>
             </nav>
 
-            <div
-                class="btn-contato py-1 px-3 rounded-md hover:bg-green-500 text-black hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">
-                <a href="https://api.whatsapp.com/send?phone=5577981605024&text=Ol%C3%A1,%20gostei%20do%20seu%20trabalho%20e%20queria..." target="_blank"><button>Contato</button></a>
+            <div class="btn-abrir md:hidden" id="btn-abrir">
+                <i class="bi bi-list"></i>
             </div>
+
+
+            <div class="menu-mobile bg-black" id="menu-mobile">
+                <div class="btn-fechar" id="btn-fechar">
+                    <i class="md:hidden bi bi-x"></i>
+                </div>
+
+                <nav>
+                    <ul class="block gap-10 text-gray-300">
+                        <li class="hover:text-green-500 hover:scale-105 hover:transition duration-300 ease-in-out">
+                            <a href="#inicio" class="menu-link">Início</a>
+                        </li>
+                        <li class="hover:text-green-500 hover:scale-105 hover:transition duration-300 ease-in-out">
+                            <a href="#especialidades" class="menu-link">Especialidades</a>
+                        </li>
+                        <li class="hover:text-green-500 hover:scale-105 hover:transition duration-300 ease-in-out">
+                            <a href="#sobre" class="menu-link">Sobre</a>
+                        </li>
+                        <li class="hover:text-green-500 hover:scale-105 hover:transition duration-300 ease-in-out">
+                            <a href="#projetos" class="menu-link">Projetos</a>
+                        </li>
+                        <li class="hover:text-green-500 hover:scale-105 hover:transition duration-300 ease-in-out">
+                            <a href="#contato" class="menu-link">Contato</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div
+                class="hidden md:flex btn-contato py-1 px-3 rounded-md hover:bg-green-500 text-black hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">
+                <a href="https://api.whatsapp.com/send?phone=5577981605024&text=Ol%C3%A1,%20gostei%20do%20seu%20trabalho%20e%20queria..."
+                    target="_blank"><button>Contato</button></a>
+            </div>
+
+            <div class="orvelay-menu" id="orvelay-menu"></div>
 
         </div>
 
@@ -48,28 +88,33 @@
 
     <div class="hidden md:flex"></div>
 
-    
 
-    <section id="home" class=" grid grid-cols-1 md:grid-cols-2 w-full items-center">
-        <div class="container mx-auto px-20">
-            <h2 class="text-3xl font-bold">DA IMAGINAÇÃO AO <span class="text-green-500">CÓDIGO.</span></h2>
+
+    <section id="inicio" class=" grid grid-cols-1 md:grid-cols-2 w-full items-center mt-5">
+        <div class="container mx-auto px-6 md:px-20">
+            <h2 class="text-center md:text-left text-3xl font-bold">DA IMAGINAÇÃO AO <span
+                    class="text-green-500">CÓDIGO.</span></h2>
             <p class="mt-6 text-gray-300">Dou vida a conceitos criativos, construindo experiências digitais que combinam
                 estética com funcionalidade. Com habilidade em HTML, CSS, JavaScript, Tailwind e Bootstrap, crio
                 interfaces dinâmicas e responsivas, tornando cada projeto uma experiência envolvente e intuitiva para o
                 usuário.</p>
-            <a href="https://api.whatsapp.com/send?phone=5577981605024&text=Ol%C3%A1,%20gostei%20do%20seu%20trabalho%20e%20queria..." target="_blank"
-                class=" btn-contato mt-6 inline-block  text-black font-bold hover:bg-green-500 py-3 px-8 rounded-md hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">Comece
-                Agora</a>
+
+                <div class="text-center md:text-left">
+
+                    <a href="https://api.whatsapp.com/send?phone=5577981605024&text=Ol%C3%A1,%20gostei%20do%20seu%20trabalho%20e%20queria..."
+                        target="_blank"
+                        class="btn-contato mt-6 inline-block  text-black font-bold hover:bg-green-500 py-3 px-8 rounded-md hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">Entre em Contato</a>
+                </div>
         </div>
 
         <div class="flex justify-center items-center mt-10">
-            <img class="h-80 md:h-96 animate-pulse" src="./src/img/pessoa.png" alt="minha foto">
+            <img class="h-80 md:h-96 animate-pulse" src="./src/img/pessoa.svg" alt="minha foto">
         </div>
     </section> <!-- Inicio -->
 
 
     <!-- Minhas Especialidades -->
-    <section id="modulos" class="py-16 w-full">
+    <section id="especialidades" class="py-16 w-full">
         <div class="container mx-auto px-6">
             <h2 class=" text-center text-3xl font-bold">MINHAS <span
                     class="text-green-500 font-bold">ESPECIALIDADES</span></h2>
@@ -101,14 +146,14 @@
     </section> <!-- Minhas Especialidades -->
 
 
-<!-- Sobre Mim -->
-    <section id="home" class=" grid grid-cols-1 md:grid-cols-2 w-full mb-10 items-center">
+    <!-- Sobre Mim -->
+    <section id="sobre" class=" grid grid-cols-1 md:grid-cols-2 w-full mb-10 items-center">
         <div class="flex justify-center items-center mb-10">
             <img class="h-80 md:h-96 animate-pulse" src="./src/img/foto.png" alt="minha foto">
         </div>
 
-        <div class="container mx-auto px-20">
-            <h2 class="text-3xl font-bold">OLÁ, SOU LINDENILSON OLIVEIRA – <span class="text-green-500">DESENVOLVEDOR
+        <div class="container mx-auto px-6 md:px-20">
+            <h2 class="text-center md:text-left text-3xl font-bold">OLÁ, SOU LINDENILSON OLIVEIRA – <span class="text-green-500">DESENVOLVEDOR
                     FRONT-END</span></h2>
             <p class="mt-6 text-gray-300">Sou um desenvolvedor front-end apaixonado por criar interfaces elegantes e
                 funcionais, combinando criatividade com a lógica da programação. Com experiência em HTML, CSS,
@@ -144,7 +189,7 @@
     </section> <!-- Sobre Mim -->
 
     <!-- Projetos Section -->
-    <section class="py-10 px-20">
+    <section id="projetos" class="py-10 px-6 md:px-20">
         <h2 class="text-3xl font-bold text-center mb-8">MEUS <span class="text-green-500">PROJETOS</span></h2>
 
         <!-- Container de Projetos -->
@@ -267,54 +312,82 @@
     </section>
 
 
-<!-- Formulário de Contato -->
-<section class="py-10 px-20">
-    <h2 class="text-3xl font-bold text-center mb-8">FALE <span class="text-green-500">COMIGO!</span></h2>
-    
-    <div class="max-w-xl mx-auto shadow-md rounded-lg p-6">
-        <form action="./src/enviar.php" method="POST">
-            <!-- Nome -->
-            <div class="mb-4">
-                <label for="nome" class="block text-white font-semibold mb-2">Nome *</label>
-                <input type="text" id="nome" name="nome" required 
-                       class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105"
-                       placeholder="Seu Nome">
-            </div>
-            
-            <!-- Email -->
-            <div class="mb-4">
-                <label for="email" class="block text-white font-semibold mb-2">Email *</label>
-                <input type="email" id="email" name="email" required 
-                       class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105" 
-                       placeholder="Seu Email">
-            </div>
-            
-            <!-- Telefone -->
-            <div class="mb-4">
-                <label for="telefone" class="block text-white font-semibold mb-2">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" 
-                       class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105" 
-                       placeholder="(00) 00000-0000">
-            </div>
-            
-            <!-- Mensagem -->
-            <div class="mb-4">
-                <label for="mensagem" class="block text-white font-semibold mb-2">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="4" 
-                          class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105" 
-                          placeholder="Escreva sua mensagem..."></textarea>
-            </div>
-            
-            <!-- Botão Enviar -->
-            <div class="text-center">
-                <button type="submit" 
+    <!-- Formulário de Contato -->
+    <section id="contato" class="py-10 px-6 md:px-20">
+        <h2 class="text-3xl font-bold text-center mb-8">FALE <span class="text-green-500">COMIGO!</span></h2>
+
+        <div class="max-w-xl mx-auto shadow-md rounded-lg p-6">
+            <form action="https://formspree.io/f/mvgorgvq" method="POST">
+                <!-- Nome -->
+                <div class="mb-4">
+                    <label for="nome" class="block text-white font-semibold mb-2">Nome *</label>
+                    <input type="text" id="nome" name="nome" required
+                        class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105"
+                        placeholder="Seu Nome">
+                </div>
+
+                <!-- Email -->
+                <div class="mb-4">
+                    <label for="email" class="block text-white font-semibold mb-2">Email *</label>
+                    <input type="email" id="email" name="email" required
+                        class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105"
+                        placeholder="Seu Email">
+                </div>
+
+                <!-- Telefone -->
+                <div class="mb-4">
+                    <label for="telefone" class="block text-white font-semibold mb-2">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone"
+                        class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105"
+                        placeholder="(00) 00000-0000">
+                </div>
+
+                <!-- Mensagem -->
+                <div class="mb-4">
+                    <label for="mensagem" class="block text-white font-semibold mb-2">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="4"
+                        class="bg-gray-900 w-full px-4 py-2 rounded-lg hover:bg-gray-800 hover:transition duration-300 ease-in-out focus:outline-none hover:shadow-2xl hover:scale-105"
+                        placeholder="Escreva sua mensagem..."></textarea>
+                </div>
+
+                <!-- Botão Enviar -->
+                <div class="text-center">
+                    <button type="submit"
                         class="px-6 py-2 btn-contato text-black font-bold hover:bg-green-500 rounded-md hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">
-                    Enviar
-                </button>
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <!-- Redes Sociais -->
+            <div class="flex justify-center space-x-4 mb-4">
+                <a href="https://www.instagram.com/dev.lindenilson/" target="_blank"
+                    class="hover:text-green-500 hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">
+                    <i class="bi bi-instagram text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/lindenilson-oliveira/" target="_blank"
+                    class="hover:text-green-500 hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">
+                    <i class="bi bi-linkedin text-2xl"></i>
+                </a>
+                <a href="https://github.com/lindenilson" target="_blank"
+                    class="hover:text-green-500 hover:shadow-2xl hover:scale-105 hover:transition duration-300 ease-in-out">
+                    <i class="bi bi-github text-2xl"></i>
+                </a>
             </div>
-        </form>
-    </div>
-</section>
+
+            <!-- Email de Contato -->
+            <p class="text-gray-400 text-sm">Entre em contato: <a href="mailto:dev.lindenilson@gmail.com"
+                    class="text-green-500 hover:underline">dev.lindenilson@gmail.com</a></p>
+
+            <!-- Direitos Autorais -->
+            <p class="text-gray-500 text-xs mt-4">&copy; 2024 Lindenilson Oliveira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="./src/js/script.js"></script>
 </body>

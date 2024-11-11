@@ -1,0 +1,10 @@
+# Bloqueia o acesso a qualquer página ou pasta que você não queira indexar
+User-agent: *
+Disallow: /admin/
+Disallow: /scripts/
+
+# Permite o acesso ao sitemap e a todas as outras páginas
+Allow: /
+
+# Indica a localização do sitemap
+Sitemap: https://portfolio-lindenilson.netlify.app/sitemap.xml

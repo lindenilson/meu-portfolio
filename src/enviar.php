@@ -1,30 +1,64 @@
 <?php
-// Verifica se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém e sanitiza os dados do formulário
-    $nome = htmlspecialchars(trim($_POST['nome']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $telefone = htmlspecialchars(trim($_POST['telefone']));
-    $mensagem = htmlspecialchars(trim($_POST['mensagem']));
+require __DIR__ . '/../vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    // Validação básica para campos obrigatórios
-    if (empty($nome) || empty($email)) {
-        echo "Por favor, preencha todos os campos obrigatórios.";
-    } else {
-        // Configurações de e-mail (substitua com suas informações)
-        $to = "dev.lindenilson@gmail.com"; // Altere para o seu e-mail
-        $subject = "Nova mensagem de contato do portfólio";
-        $body = "Nome: $nome\nEmail: $email\nTelefone: $telefone\n\nMensagem:\n$mensagem";
-        $headers = "From: $email";
+// Dados de conexão com o banco de dados
+$host = 'localhost';
+$dbname = 'portfolio';
+$user = 'root';
+$password = '';
 
-        // Envia o e-mail e verifica se foi enviado com sucesso
-        if (mail($to, $subject, $body, $headers)) {
-            echo "Mensagem enviada com sucesso!";
-        } else {
-            echo "Houve um erro ao enviar a mensagem. Tente novamente mais tarde.";
-        }
+try {
+    // Conexão com o banco de dados
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Captura os dados do formulário
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $mensagem = $_POST['mensagem'];
+
+    // Salva os dados no banco de dados
+    $stmt = $pdo->prepare("INSERT INTO mensagens (nome, email, telefone, mensagem) VALUES (:nome, :email, :telefone, :mensagem)");
+    $stmt->execute([
+        ':nome' => $nome,
+        ':email' => $email,
+        ':telefone' => $telefone,
+        ':mensagem' => $mensagem
+    ]);
+
+    // Configuração do PHPMailer
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configurações do servidor SMTP
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Servidor SMTP do Gmail
+        $mail->SMTPAuth = true;
+        $mail->Username = 'dev.lindenilson@gmail.com'; // Seu e-mail
+        $mail->Password = 'hpqo nlnv dgth pzqe'; // Senha do aplicativo
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Configuração do e-mail
+        $mail->setFrom($email, $nome); // De quem está enviando
+        $mail->addAddress('dev.lindenilson@gmail.com'); // Para onde será enviado
+        $mail->Subject = 'Contato portfolio';
+        $mail->Body = "Nome: $nome\nTelefone: $telefone\nE-mail: $email\nMensagem: $mensagem";
+
+        // Envia o e-mail
+        $mail->send();
+
+        // Redireciona para a página de sucesso
+        header('Location: ../sucesso.html');
+        exit;
+    } catch (Exception $e) {
+        echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
     }
-} else {
-    echo "Formulário não enviado corretamente.";
+} catch (PDOException $e) {
+    echo "Erro ao salvar os dados: " . $e->getMessage();
 }
 ?>
+
